@@ -20,7 +20,7 @@ passport.use('local-singup', new LocalStrategy({
 
     //Preguntar si ya existe 
     const user = await User.findOne({'email': email})
-    console.log(user)
+    //console.log(user)
 
     if(user) 
     {
@@ -54,7 +54,7 @@ passport.use('local-signin', new LocalStrategy({
     {
       return done(null, false, req.flash('Contraseña', 'Contraseña incorrecta'));
     }
-    console.log('user');
+    //console.log('user');
     return done(null, user);
 
   }));

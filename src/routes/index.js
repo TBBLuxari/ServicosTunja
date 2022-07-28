@@ -6,15 +6,15 @@ const passport = require('passport');
 router.get('/', (req, res ,next)=> {res.render('singin')});
 //------------------------------------------------------------------------------------------------
 
-router.post('/singin', passport.authenticate('local-signin' ,{
-    successRedirect:'/profile',
-    failureRedirect:'/singin',
-    passReqToCallback:true
-}));
+router.post('/singin', passport.authenticate('local-signin') ,
+  function (req, res, next) {
+    res.send("Entro");
+  }
+);
 //------------------------------------------------------------------------------------------------
 router.get('/logout',(req, res, next) =>{
   req.logout((err)=>{if (err) { return next(err); }});
-  res.redirect('/');
+  res.send("Sesion finalizada");
 });
 //------------------------------------------------------------------------------------------------
 router.get('/profile',isAuthenticated, (req, res , next)=> 
@@ -22,12 +22,15 @@ router.get('/profile',isAuthenticated, (req, res , next)=>
    res.send("Melo")
 });
 //------------------------------------------------------------------------------------------------
-function isAuthenticated(req, res, next) {
-    if(req.isAuthenticated()) {
+function isAuthenticated(req, res, next) 
+{
+    if(req.isAuthenticated()) 
+    {
       return next();
     }
   
-    res.redirect('/')
+    //res.redirect('/')
+    res.send("No se ha iniciado sesion");
   }
 //------------------------------------------------------------------------------------------------
 module.exports = router;
