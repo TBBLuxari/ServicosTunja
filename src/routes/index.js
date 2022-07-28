@@ -20,6 +20,8 @@ router.get('/logout',(req, res, next) =>{
 router.get('/profile',isAuthenticated, (req, res , next)=> 
 {
    res.send("Melo")
+   print("Melo")
+   console.log("Melo")
 });
 //------------------------------------------------------------------------------------------------
 function isAuthenticated(req, res, next) 
