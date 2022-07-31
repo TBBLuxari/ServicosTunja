@@ -8,7 +8,7 @@ router.get('/', (req, res ,next)=> {res.render('singin')});
 
 router.post('/singin', passport.authenticate('local-signin') ,
   function (req, res, next) {
-    res.send("Entro");
+    res.send("Entro")
   }
 );
 //------------------------------------------------------------------------------------------------
@@ -31,6 +31,6 @@ function isAuthenticated(req, res, next)
   
     //res.redirect('/')
     res.send("No se ha iniciado sesion");
-  }
+}
 //------------------------------------------------------------------------------------------------
 module.exports = router;

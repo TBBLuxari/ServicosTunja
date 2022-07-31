@@ -5,6 +5,7 @@ const app = express();
 const morgan = require('morgan');
 const passport = require('passport');
 const session = require('express-session');
+
 const flash = require('connect-flash');
 require('./database');
 require('./passport/local-auth');
@@ -16,16 +17,23 @@ app.engine('ejs', engine);
 app.set('view engine', 'ejs');
 //-------------------------------------------------------Middlewares--------------------------------------------------------------------------
 app.use(morgan('dev'));
+
 app.use(express.urlencoded({extended: false}));
+
 app.use(session({
     secret: 'CuentameloCuentameloTODO',
     resave: false,
     saveUninitialized: false
 }));
+
 app.use(flash());
+
 app.use(passport.initialize());
+
 app.use(passport.session());
 
+
+// flahs
 app.use((req, res, next) => {
     //app.locals.signinMessage = req.flash('signinMessage');
     app.locals.CorreoExistente = req.flash('CorreoExistente');
