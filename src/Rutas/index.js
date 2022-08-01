@@ -20,12 +20,12 @@ router.post('/Login', passport.authenticate('local-signin') , (req, res, next)=>
     res.send("Login correcto ");   
 });
 //-----------------------------------------------------------
-router.get('/Profile',isAuthenticated, (req, res , next)=> 
+router.get('/Profile', (req, res , next)=> 
 {
      res.send("Para ver este mensaje tiene que haber iniciado sesion ")
 });
 //-----------------------------------------------------------
-router.post('/Logout',isAuthenticated,(req, res, next) =>{
+router.post('/Logout',(req, res, next) =>{
 
     req.logout((err)=>{
 
