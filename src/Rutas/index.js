@@ -17,7 +17,8 @@ router.post('/Login', passport.authenticate('local-signin') , (req, res, next)=>
         const usuario = await Usuario.updateOne({email: req.body.email},{activo:1})
     }
     actualizarEstado();
-    res.send("Login correcto ");   
+
+    res.send("1");   
 });
 //-----------------------------------------------------------
 router.get('/Profile', (req, res , next)=> 
