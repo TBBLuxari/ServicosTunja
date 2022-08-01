@@ -25,7 +25,7 @@ router.get('/Profile', (req, res , next)=>
      res.send("Para ver este mensaje tiene que haber iniciado sesion ")
 });
 //-----------------------------------------------------------
-router.post('/Logout',(req, res, next) =>{
+router.post('/Logout',passport.authenticate('local-signin'),(req, res, next) =>{
 
     req.logout((err)=>{
 
