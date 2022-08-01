@@ -34,10 +34,10 @@ router.post('/Logout',(req, res, next) =>{
             return next(err); 
         }
 
-        const actualizarEstado = async()=>{
+        const actualizarEstado2 = async()=>{
             const usuario = await Usuario.updateOne({email: req.body.email},{activo:0})
         }
-        actualizarEstado();   
+        actualizarEstado2(); 
     });
     res.send("Sesion finalizada")
   });
