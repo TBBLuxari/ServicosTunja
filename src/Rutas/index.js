@@ -40,7 +40,7 @@ router.post('/Logout',passport.authenticate('local-signin'),(req, res, next) =>{
         }
         actualizarEstado2(); 
     });
-    res.send("Sesion finalizada")
+    res.send("0")
   });
 //-----------------------------------------------------------
 function isAuthenticated(req, res, next) 
