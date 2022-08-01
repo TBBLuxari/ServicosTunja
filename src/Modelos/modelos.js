@@ -10,7 +10,7 @@ const usuarioEsquema = new Esquema(
     activo:{required: true ,type: Number}
 },
 {
-    timestamps:true
+    timestamps:{createdAt:"Registrado", updatedAt:"UltimoActividad"}
 });
 
 usuarioEsquema.methods.encryptPassword =(password)=>{
