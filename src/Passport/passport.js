@@ -2,6 +2,7 @@ const { use } = require('passport');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const Usuario = require('../Modelos/modelos');
+const Notificacion= require('../Modelos/notificacion');
 
 passport.serializeUser((user,done) => {
     done(null,user.id);
@@ -30,13 +31,18 @@ passport.use('local-singup', new LocalStrategy({
     {
         //Ingresar usuario nuevo
         const newUser = new Usuario();
+        const newNoti = new Notificacion();
         newUser.email = email;
         //user.password = password;
         newUser.password = newUser.encryptPassword(password);
         newUser.activo = 0;
         newUser.nombre = req.body.nombre;
         newUser.puntos = 0;
+        newNoti.titulo ="";
+        newNoti.mensaje="";
+        newNoti.payload ="";
         await newUser.save();
+        await newNoti.save();
         done(null,newUser);
     }
 }));
