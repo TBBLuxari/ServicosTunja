@@ -21,9 +21,14 @@ router.post('/Login', passport.authenticate('local-signin') , (req, res, next)=>
     res.send("1");   
 });
 //-----------------------------------------------------------
-router.get('/Profile', (req, res , next)=> 
+router.post('/Profile', passport.authenticate('local-signin'),(req, res , next)=> 
 {
-     res.send("Para ver este mensaje tiene que haber iniciado sesion ")
+    const Obtenerdato = async()=>{
+        const Usuario = await Usuario.findOne ({'email': req.body.email},function(err, usuario){
+           res.send(usuario).json; 
+        })
+    }
+    Obtenerdato();
 });
 //-----------------------------------------------------------
 router.post('/Logout',passport.authenticate('local-signin'),(req, res, next) =>{

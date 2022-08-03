@@ -7,10 +7,13 @@ const usuarioEsquema = new Esquema(
     //email Requrida , tipo string , unico(no se puede repetir en la base) ,que se guarde en minusculas
     email:{required: true ,type: String ,unique: true ,lowercase: true},
     password:{required: true ,type: String},
-    activo:{required: true ,type: Number}
+    nombre:{required: true ,type: String},
+    activo:{required: true ,type: Number},
+    puntos:{required: true ,type: Number}
+
 },
 {
-    timestamps:{createdAt:"Registrado", updatedAt:"UltimoActividad"}
+    timestamps:{createdAt:"Registrado", updatedAt:"UltimaActividad"}
 });
 
 usuarioEsquema.methods.encryptPassword =(password)=>{
