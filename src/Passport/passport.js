@@ -38,9 +38,10 @@ passport.use('local-singup', new LocalStrategy({
         newUser.activo = 0;
         newUser.nombre = req.body.nombre;
         newUser.puntos = 0;
-        newNoti.titulo ="";
-        newNoti.mensaje="";
-        newNoti.payload ="";
+        newNoti.correo = req.body.email;
+        newNoti.titulo  ="Titulo";
+        newNoti.mensaje ="Mensaje";
+        newNoti.link ="Link";
         await newUser.save();
         await newNoti.save();
         done(null,newUser);

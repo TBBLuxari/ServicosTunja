@@ -4,9 +4,11 @@ const Esquema = mongoose.Schema;
 
 const notificacionEsquema = new Esquema(
 {   
-    titulo:{required: true ,type: String ,unique: true ,lowercase: true},
+    correo:{required: true ,type: String ,unique: true },
+    titulo:{required: true ,type: String},
     mensaje:{required: true ,type: String},
-    payload:{required: true ,type: String},
+    link:{required: true ,type: String},
+   
 },
 {
     timestamps:{createdAt:false, updatedAt:"UltimaNotificaion" },

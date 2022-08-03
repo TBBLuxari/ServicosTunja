@@ -62,7 +62,7 @@ router.post('/Ranking',passport.authenticate('local-signin'),(req,res,next)=>{
             console.log(ranking[i].email)*/
             if(ranking[i].email == req.body.email)
             {
-                res.send(i.toString());
+                res.send((i+1).toString());
             }  
         }   
     }
@@ -70,6 +70,10 @@ router.post('/Ranking',passport.authenticate('local-signin'),(req,res,next)=>{
     
 });
 //-----------------------------------------------------------
+router.post('/Notificar',passport.authenticate('local-signin') ,(req, res ,next)=> {
+    res.send("Hola")
+});
+//----------------------------------------------------------
 function isAuthenticated(req, res, next) 
 {
     if(req.isAuthenticated()) 
