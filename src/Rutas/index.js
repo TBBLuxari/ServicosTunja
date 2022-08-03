@@ -48,6 +48,25 @@ router.post('/Logout',passport.authenticate('local-signin'),(req, res, next) =>{
     res.send("0")
   });
 //-----------------------------------------------------------
+router.post('/Ranking',(req,res,next)=>{
+
+    const HacerRanking = async() => {
+        var ranking = await Usuario.find({}).sort({puntos: -1})
+        var arrRanking =[]; 
+
+        console.log((0+1).toString());
+        for (let i = 0; i < ranking.length; i++) 
+        {
+        //{nombre : Juan , puntos : 15 ,posicion :0 (0 es = 1 osea el primero) }
+            var campo ={nombre:ranking[i].nombre ,puntos:ranking[i].puntos ,posicion: (i+1).toString()};
+            arrRanking.push(campo);
+        }
+        res.send(arrRanking);
+    }
+    HacerRanking(); ////
+    
+});
+//-----------------------------------------------------------
 function isAuthenticated(req, res, next) 
 {
     if(req.isAuthenticated()) 
