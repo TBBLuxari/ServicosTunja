@@ -48,22 +48,25 @@ router.post('/Logout',passport.authenticate('local-signin'),(req, res, next) =>{
     res.send("0")
   });
 //-----------------------------------------------------------
-router.post('/Ranking',(req,res,next)=>{
+router.post('/Ranking',passport.authenticate('local-signin'),(req,res,next)=>{
 
     const HacerRanking = async() => {
         var ranking = await Usuario.find({}).sort({puntos: -1})
         var arrRanking =[]; 
 
-        console.log((0+1).toString());
         for (let i = 0; i < ranking.length; i++) 
         {
-        //{nombre : Juan , puntos : 15 ,posicion :0 (0 es = 1 osea el primero) }
-            var campo ={nombre:ranking[i].nombre ,puntos:ranking[i].puntos ,posicion: (i+1).toString()};
+            /*//{nombre : Juan , puntos : 15 ,posicion :0 (0 es = 1 osea el primero) }
+             campo ={nombre:ranking[i].nombre ,puntos:ranking[i].puntos ,posicion: (i+1).toString()};
             arrRanking.push(campo);
-        }
-        res.send(arrRanking);
+            console.log(ranking[i].email)*/
+            if(ranking[i].email == req.body.email)
+            {
+                res.send(i.toString());
+            }  
+        }   
     }
-    HacerRanking(); ////
+    HacerRanking();
     
 });
 //-----------------------------------------------------------
