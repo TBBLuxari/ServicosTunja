@@ -34,7 +34,7 @@ passport.use('local-singup', new LocalStrategy({
         //user.password = password;
         newUser.password = newUser.encryptPassword(password);
         newUser.activo = 0;
-        newUser.nombre = req.params.nombre
+        newUser.nombre = req.body.nombre;
         newUser.puntos = 0;
         await newUser.save();
         done(null,newUser);

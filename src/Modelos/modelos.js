@@ -13,7 +13,8 @@ const usuarioEsquema = new Esquema(
 
 },
 {
-    timestamps:{createdAt:"Registrado", updatedAt:"UltimaActividad"}
+    timestamps:{createdAt:"Registrado", updatedAt:"UltimaActividad" },
+    versionKey:false,   
 });
 
 usuarioEsquema.methods.encryptPassword =(password)=>{

@@ -23,12 +23,12 @@ router.post('/Login', passport.authenticate('local-signin') , (req, res, next)=>
 //-----------------------------------------------------------
 router.post('/Profile', passport.authenticate('local-signin'),(req, res , next)=> 
 {
-    const Obtenerdato = async()=>{
-        const Usuario = await Usuario.findOne ({'email': req.body.email},function(err, usuario){
-           res.send(usuario).json; 
-        })
+    const ObtenerDato = async()=>{
+        var dato = await Usuario.findOne({email: req.body.email});
+        res.send({nombre :dato.nombre , puntos:dato.puntos}); 
     }
-    Obtenerdato();
+    ObtenerDato();
+    //res.send("Profile No dato "); 
 });
 //-----------------------------------------------------------
 router.post('/Logout',passport.authenticate('local-signin'),(req, res, next) =>{
