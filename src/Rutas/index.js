@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const Usuario = require('../Modelos/modelos');
+const Notificar = require('../Modelos/notificacion');
 //-----------------------------------------------------------
 router.get('/', (req, res ,next)=> {
     res.send("Hola")
@@ -71,7 +72,13 @@ router.post('/Ranking',passport.authenticate('local-signin'),(req,res,next)=>{
 });
 //-----------------------------------------------------------
 router.post('/Notificar',passport.authenticate('local-signin') ,(req, res ,next)=> {
-    res.send("Hola")
+    const BuscarNotificacion = async()=>{
+        console.log(req.body.email);
+        var notificacion = await Notificar.findOne({ correo  : req.body.email });
+        console.log(notificacion);
+        res.send(notificacion);
+    };
+    BuscarNotificacion();   
 });
 //----------------------------------------------------------
 function isAuthenticated(req, res, next) 
