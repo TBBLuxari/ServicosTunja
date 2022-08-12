@@ -42,6 +42,10 @@ passport.use('local-singup', new LocalStrategy({
         newNoti.titulo  ="Titulo";
         newNoti.mensaje ="Mensaje";
         newNoti.link ="Link";
+        newNoti.NA1={TNA1:"" ,MNA1:"" ,LNA1:""};
+        newNoti.NA2={TNA2:"" ,MNA2:"" ,LNA2:""};
+        newNoti.NA3={TNA3:"" ,MNA3:"" ,LNA3:""};
+        newNoti.NA4={TNA4:"" ,MNA4:"" ,LNA4:""};
         await newUser.save();
         await newNoti.save();
         done(null,newUser);
