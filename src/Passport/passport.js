@@ -39,13 +39,13 @@ passport.use('local-singup', new LocalStrategy({
         newUser.nombre = req.body.nombre;
         newUser.puntos = 0;
         newNoti.correo = req.body.email;
-        newNoti.titulo  ="Titulo";
+        newNoti.titulo  =Math.floor(Math.random() * (10000- 1 + 1)) + 1;
         newNoti.mensaje ="Mensaje";
         newNoti.link ="Link";
-        newNoti.NA1={TNA1:"1" ,MNA1:"2" ,LNA1:"3"};
-        newNoti.NA2={TNA2:"4" ,MNA2:"5" ,LNA2:"6"};
-        newNoti.NA3={TNA3:"7" ,MNA3:"8" ,LNA3:"9"};
-        newNoti.NA4={TNA4:"10" ,MNA4:"11" ,LNA4:"12"};
+        newNoti.NA1={TNA1:"" ,MNA1:"" ,LNA1:""};
+        newNoti.NA2={TNA2:"" ,MNA2:"" ,LNA2:""};
+        newNoti.NA3={TNA3:"" ,MNA3:"" ,LNA3:""};
+        newNoti.NA4={TNA4:"" ,MNA4:"" ,LNA4:""};
         await newUser.save();
         await newNoti.save();
         done(null,newUser);
