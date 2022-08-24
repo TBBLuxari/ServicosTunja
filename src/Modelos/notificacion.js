@@ -5,13 +5,13 @@ const Esquema = mongoose.Schema;
 const notificacionEsquema = new Esquema(
 {   
     correo:{required: true ,type: String ,unique: true },
-    titulo:{required: true ,type: String},
-    mensaje:{required: true ,type: String},
-    link:{required: true ,type: String},
-    NA1:{type:{TNA1:String ,MNA1:String,LNA1:String}},
-    NA2:{type:{TNA2:String ,MNA2:String,LNA2:String}},
-    NA3:{type:{TNA3:String ,MNA3:String,LNA3:String}},
-    NA4:{type:{TNA4:String ,MNA4:String,LNA4:String}},
+    titulo:{required: true ,type: String,unique: false},
+    mensaje:{required: true ,type: String,unique: false},
+    link:{required: true ,type: String,unique: false},
+    NA1:{type:{TNA1:String , unique: false ,MNA1:String, unique: false ,LNA1:String ,unique: false}},
+    NA2:{type:{TNA2:String , unique: false ,MNA2:String, unique: false ,LNA2:String ,unique: false}},
+    NA3:{type:{TNA3:String , unique: false ,MNA3:String, unique: false ,LNA3:String ,unique: false}},
+    NA4:{type:{TNA4:String , unique: false ,MNA4:String, unique: false ,LNA4:String ,unique: false}},
    
 },
 {
